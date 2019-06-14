@@ -1,8 +1,17 @@
+import React from 'react'
 import styled from 'styled-components'
 import { ITheme } from '../theme'
 
 interface IProps {
   theme: ITheme
+}
+
+interface IComponentProps {
+  name: string
+  onChange: (value: number | string, name: string) => void
+  type: 'text'
+  placeholder?: string
+  value: number | string
 }
 
 const Input = styled.input`
@@ -23,4 +32,14 @@ const Input = styled.input`
   }
 `
 
-export default Input
+const InputComponent = ({ name, onChange, value, type, placeholder }: IComponentProps) => (
+  <Input
+    name={name}
+    onChange={e => onChange(e.target.value, name)}
+    placeholder={placeholder}
+    type={type}
+    value={value}
+  />
+)
+
+export default InputComponent
