@@ -1,6 +1,5 @@
 import constants from './constants'
 import { FormActionTypes } from './creators'
-import { FormValues } from '../../features/Form'
 
 export enum Steps {
   WHO,
@@ -24,10 +23,15 @@ export default (state = initialState, action: FormActionTypes) => {
     case constants.SET_ACTIVE_STEP:
       return { ...state, activeStep: action.payload.stepId }
 
-    // case constants.SUBMIT_VALUES:
-    //   return {...state, values: {
+    case constants.SUBMIT_VALUES:
+      return {
+        ...state,
+        values: {
+          ...state.values,
+          [action.payload.stepId]: (action.payload as any).value, // TODO
+        },
+      }
 
-    //   }}
     default:
       return state
   }

@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from 'react'
-import { compose } from 'redux'
+import React, { useState, useCallback, useEffect } from 'react'
 
 export type FormValue = string
 export type FormValues = { [key: string]: FormValue }
@@ -13,6 +12,10 @@ interface IProps {
 const Form = ({ children, initialValues = {}, onSubmit }: IProps) => {
   const [values, setValues] = useState(initialValues)
 
+  // This updates values when user goes through steps
+  useEffect(() => setValues(initialValues), [initialValues])
+
+  // Memoizing handlers to keep their reference if deps don't change
   const handleSubmit = useCallback(() => {
     setValues(initialValues)
     onSubmit(values)
