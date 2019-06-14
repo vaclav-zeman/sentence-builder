@@ -5,7 +5,9 @@ import { IStore } from '../redux/rootReducer'
 import Title from '../ui/Title'
 
 const Sentence = ({ values }: any) => {
-  const sentence = Object.values(values).join(' ')
+  const sentence = Object.values(values)
+    .map(value => (value === '' ? '-----' : value))
+    .join(' ')
 
   return <Title>{sentence}</Title>
 }

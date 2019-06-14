@@ -15,7 +15,12 @@ export interface IFormState {
 
 const initialState: IFormState = {
   activeStep: Steps.WHO,
-  values: {},
+  values: {
+    0: '',
+    1: '',
+    2: '',
+    3: '',
+  },
 }
 
 export default (state = initialState, action: FormActionTypes) => {

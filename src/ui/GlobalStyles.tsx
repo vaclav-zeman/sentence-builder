@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
         min-height: 100%;
         height: 100%;
         font-size: 10px;
+        background: #f2f5f7;
     }
 
     *, *:after, *:before {

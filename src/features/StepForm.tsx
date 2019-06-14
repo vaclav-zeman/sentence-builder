@@ -48,7 +48,7 @@ const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IPr
   const handleGoBack = () => setActiveStep(activeStep - 1)
 
   return (
-    <Flex width={600} flexDirection="column">
+    <Flex width={[1, 1 / 2, 1 / 3]} flexDirection="column">
       <Title variant="secondary">{title}</Title>
       <Form onSubmit={handleSubmit} initialValues={{ [inputKey]: initialValue }}>
         {({ values, onChange, onSubmit }) => (
