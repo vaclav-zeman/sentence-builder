@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import Form from './Form/reducer'
+import Form, { IFormState } from './Form/reducer'
+
+export interface IStore {
+  Form: IFormState
+}
 
 export default combineReducers({
   Form,
