@@ -16,10 +16,14 @@ const Form = ({ children, initialValues = {}, onSubmit }: IProps) => {
   useEffect(() => setValues(initialValues), [initialValues])
 
   // Memoizing handlers to keep their reference if deps don't change
-  const handleSubmit = useCallback(() => {
-    setValues(initialValues)
-    onSubmit(values)
-  }, [initialValues, values, onSubmit])
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault()
+      setValues(initialValues)
+      onSubmit(values)
+    },
+    [initialValues, values, onSubmit]
+  )
 
   const handleChange = useCallback(
     (value: FormValue, name: FormValue) => setValues({ ...values, [name]: value }),

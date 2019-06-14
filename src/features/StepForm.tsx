@@ -3,12 +3,12 @@ import { Flex } from 'rebass'
 import { connect } from 'react-redux'
 
 import { IStore } from '../redux/rootReducer'
+import { setActiveStep, submitValues } from '../redux/Form/creators'
+import { Steps } from '../redux/Form/reducer'
+import Button from '../ui/Button'
+import Form, { FormValues } from '../ui/Form'
 import Input from '../ui/Input'
 import Title from '../ui/Title'
-import Button from '../ui/Button'
-import { Steps } from '../redux/Form/reducer'
-import { setActiveStep, submitValues } from '../redux/Form/creators'
-import Form, { FormValues } from './Form'
 
 interface IProps {
   activeStep: Steps
@@ -36,19 +36,23 @@ const inputKey = 'textInput'
 const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IProps) => {
   const [title, placeholder] = messages[activeStep]
   const isFirst = activeStep === Steps.WHO
+  const isLast = activeStep === Steps.WHERE
 
   const handleSubmit = (values: FormValues) => {
-    setActiveStep(activeStep + 1)
     submitValues(activeStep, values[inputKey])
+    if (!isLast) {
+      setActiveStep(activeStep + 1)
+    }
   }
+
   const handleGoBack = () => setActiveStep(activeStep - 1)
 
   return (
     <Flex width={600} flexDirection="column">
-      <Title>{title}</Title>
+      <Title variant="secondary">{title}</Title>
       <Form onSubmit={handleSubmit} initialValues={{ [inputKey]: initialValue }}>
         {({ values, onChange, onSubmit }) => (
-          <>
+          <form onSubmit={onSubmit}>
             <Input
               type="text"
               name={inputKey}
@@ -60,15 +64,13 @@ const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IPr
               {isFirst ? (
                 <span />
               ) : (
-                <Button onClick={handleGoBack} secondary>
+                <Button type="button" onClick={handleGoBack} secondary>
                   Back
                 </Button>
               )}
-              <Button onClick={onSubmit} type="submit">
-                Continue
-              </Button>
+              <Button type="submit">{isLast ? 'Update' : 'Continue'}</Button>
             </Flex>
-          </>
+          </form>
         )}
       </Form>
     </Flex>
