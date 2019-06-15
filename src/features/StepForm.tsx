@@ -27,8 +27,8 @@ interface IMessages {
 const messages: IMessages = {
   0: ['Who?', 'e.g. Jenkins'],
   1: ['What?', 'e.g. is coding'],
-  2: ['When?', 'e.g. at noon'],
-  3: ['Where?', 'e.g. at Home'],
+  2: ['When?', 'e.g. today'],
+  3: ['Where?', 'e.g. at home'],
 }
 
 const inputKey = 'textInput'
@@ -53,7 +53,9 @@ const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IPr
 
   return (
     <Flex width={[1, 1 / 2, 1 / 3]} flexDirection="column">
-      <Title variant="secondary">{title}</Title>
+      <Title variant="secondary" as="h2">
+        {title}
+      </Title>
       <Form onSubmit={handleSubmit} initialValues={{ [inputKey]: initialValue }}>
         {({ values, onChange, onSubmit }) => (
           <form onSubmit={onSubmit}>

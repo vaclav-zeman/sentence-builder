@@ -5,6 +5,7 @@ import { IStore } from '../redux/rootReducer'
 import { setActiveStep } from '../redux/Form/creators'
 import { Steps } from '../redux/Form/reducer'
 import Title from '../ui/Title'
+import Word from './Word'
 
 interface IProps {
   setActiveStep: (stepId: Steps) => void
@@ -15,9 +16,7 @@ const Sentence = ({ values, setActiveStep }: IProps) => {
   return (
     <Title>
       {Object.entries(values).map(([key, value]: any) => (
-        <span onClick={() => setActiveStep(Number(key))} key={key}>
-          {value || '----'}{' '}
-        </span>
+        <Word key={key} onClick={() => setActiveStep(Number(key))} value={value} />
       ))}
     </Title>
   )
