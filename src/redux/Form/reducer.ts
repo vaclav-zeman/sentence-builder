@@ -2,10 +2,10 @@ import constants from './constants'
 import { FormActionTypes } from './creators'
 
 export enum Steps {
-  WHO,
-  WHAT,
-  WHEN,
-  WHERE,
+  WHO = 0,
+  WHAT = 1,
+  WHEN = 2,
+  WHERE = 3,
 }
 
 export interface IFormState {
@@ -16,10 +16,10 @@ export interface IFormState {
 const initialState: IFormState = {
   activeStep: Steps.WHO,
   values: {
-    0: '',
-    1: '',
-    2: '',
-    3: '',
+    [Steps.WHO]: '',
+    [Steps.WHAT]: '',
+    [Steps.WHEN]: '',
+    [Steps.WHERE]: '',
   },
 }
 

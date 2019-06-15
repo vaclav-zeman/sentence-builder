@@ -18,17 +18,13 @@ interface IProps {
 }
 
 type stepMessages = [string, string]
+type MessagesType = { [index in Steps]: stepMessages }
 
-interface IMessages {
-  [key: string]: stepMessages
-}
-
-// TODO indexes
-const messages: IMessages = {
-  0: ['Who?', 'e.g. Jenkins'],
-  1: ['What?', 'e.g. is coding'],
-  2: ['When?', 'e.g. today'],
-  3: ['Where?', 'e.g. at home'],
+const messages: MessagesType = {
+  [Steps.WHO]: ['Who?', 'e.g. Jenkins'],
+  [Steps.WHAT]: ['What?', 'e.g. is coding'],
+  [Steps.WHEN]: ['When?', 'e.g. today'],
+  [Steps.WHERE]: ['Where?', 'e.g. at home'],
 }
 
 const inputKey = 'textInput'
