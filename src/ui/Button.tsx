@@ -2,16 +2,27 @@ import styled from 'styled-components'
 import { ITheme } from '../theme'
 
 interface IProps {
-  secondary?: boolean
+  variant: 'primary' | 'secondary'
   theme: ITheme
 }
 
+const background = (props: IProps) =>
+  ({
+    primary: props.theme.colors.primary,
+    secondary: 'none',
+  }[props.variant])
+
+const color = (props: IProps) =>
+  ({
+    primary: props.theme.colors.white,
+    secondary: props.theme.colors.text,
+  }[props.variant])
+
 const Button = styled.button`
-  background: ${(props: IProps) => (props.secondary ? 'none' : props.theme.colors.primary)};
+  background: ${background};
   border-radius: 3rem;
   border: none;
-  color: ${(props: IProps) =>
-    props.secondary ? props.theme.colors.text : props.theme.colors.white};
+  color: ${color};
   cursor: pointer;
   font-size: 1.6rem;
   font-weight: 600;

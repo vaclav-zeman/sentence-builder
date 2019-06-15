@@ -64,15 +64,15 @@ const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IPr
               placeholder={placeholder}
               value={values[inputKey]}
             />
-            <Flex mt={4} justifyContent="space-between">
-              {isFirst ? (
-                <span />
-              ) : (
-                <Button type="button" onClick={handleGoBack} secondary>
+            <Flex mt={4} justifyContent={isFirst ? 'flex-end' : 'space-between'}>
+              {!isFirst && (
+                <Button type="button" onClick={handleGoBack} variant="secondary">
                   Back
                 </Button>
               )}
-              <Button type="submit">{isLast ? 'Update' : 'Continue'}</Button>
+              <Button type="submit" variant="primary">
+                {isLast ? 'Update' : 'Continue'}
+              </Button>
             </Flex>
           </form>
         )}

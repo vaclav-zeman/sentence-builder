@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { IStore } from '../redux/rootReducer'
-import Title from '../ui/Title'
 import { setActiveStep } from '../redux/Form/creators'
 import { Steps } from '../redux/Form/reducer'
+import Title from '../ui/Title'
 
 interface IProps {
   setActiveStep: (stepId: Steps) => void
