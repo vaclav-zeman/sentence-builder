@@ -17,7 +17,7 @@ interface IComponentProps {
 const Input = styled.input`
   background: white;
   border-radius: 1rem;
-  border: 0.1rem solid white;
+  border: 0.15rem solid white;
   box-shadow: 0 1.5rem 3rem rgba(34, 36, 38, 0.15);
   font-size: 1.8rem;
   height: 6rem;

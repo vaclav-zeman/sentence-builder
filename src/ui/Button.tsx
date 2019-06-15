@@ -12,6 +12,7 @@ const Button = styled.button`
   border: none;
   color: ${(props: IProps) =>
     props.secondary ? props.theme.colors.text : props.theme.colors.white};
+  cursor: pointer;
   font-size: 1.6rem;
   font-weight: 600;
   padding: 1.5rem 3rem;

@@ -25,8 +25,8 @@ interface IMessages {
 
 // TODO indexes
 const messages: IMessages = {
-  0: ['Who?', 'e.g. John Doe'],
-  1: ['What?', 'e.g. is working out'],
+  0: ['Who?', 'e.g. Jenkins'],
+  1: ['What?', 'e.g. is coding'],
   2: ['When?', 'e.g. at noon'],
   3: ['Where?', 'e.g. at Home'],
 }
@@ -39,7 +39,11 @@ const StepForm = ({ activeStep, initialValue, setActiveStep, submitValues }: IPr
   const isLast = activeStep === Steps.WHERE
 
   const handleSubmit = (values: FormValues) => {
-    submitValues(activeStep, values[inputKey])
+    // Prevent re-render when editing
+    if (initialValue !== values[inputKey]) {
+      submitValues(activeStep, values[inputKey])
+    }
+
     if (!isLast) {
       setActiveStep(activeStep + 1)
     }
